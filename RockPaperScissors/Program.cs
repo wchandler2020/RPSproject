@@ -11,8 +11,8 @@ namespace RockPaperScissors
         
         static void Main(string[] args)
         {
-            Game rungame = new Game();
-            rungame.gameInit();
+            Game gameOne = new Game();
+            gameOne.gameInit();
         }
     }
 }
