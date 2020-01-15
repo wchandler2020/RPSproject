@@ -7,8 +7,13 @@ using System.Threading.Tasks;
 namespace RockPaperScissors
 {
 
-    class Computer 
+    class Computer : Player
     {
-       
+        public override void chooseGesture()
+        {
+            Random random = new Random();
+            int choiceNumber = random.Next(5);
+            gestureChoice = int.Parse(GameList[choiceNumber]);
+        }
     }
 }

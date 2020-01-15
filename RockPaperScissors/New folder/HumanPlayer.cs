@@ -8,10 +8,7 @@ namespace RockPaperScissors
 {
     class HumanPlayer : Player
     {
-        public override void chooseGesture()
-        {
-            Console.WriteLine("Choose your gesture: ");
-            int gestureChoice = int.Parse(Console.ReadLine());
-        }
+        int score;
+        string name = "Joshua";
     }
 }
