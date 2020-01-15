@@ -22,12 +22,8 @@ namespace RockPaperScissors
             string userInput = Console.ReadLine();
             
             if (userInput == "yes" || userInput == "y")
-            {
-                Console.WriteLine("What is Player ones name? ");
-                player1.name = Console.ReadLine();
-                Console.WriteLine($"Hello {player1.name}, let's get started. ");
+            {  
                 selectPlayers();
-                Console.ReadLine();
             }
             else if (userInput == "no" || userInput == "n")
             {
@@ -48,73 +44,103 @@ namespace RockPaperScissors
 
             if(playerNumber == 1)
             {
-                Console.WriteLine("One Player game it is.");
+                Console.WriteLine("One Player game it is. Press ENTER to continue");
+                Console.WriteLine("Enter a name for player 1");
+                player1.name = Console.ReadLine();
                 player2 = new Computer();
-                player2.chooseGesture();
+                player2.name = "JOSHUA";
                 Console.ReadLine();
                 playGame();
-            }else if(playerNumber == 2)
+                
+            }
+            else if(playerNumber == 2)
             {
-                Console.WriteLine("Two Player game it is.");
+                Console.WriteLine("Two Player game it is. Press ENTER to Continue.");
                 player2 = new HumanPlayer();
+                Console.WriteLine("Enter a name for player 1");
+                player1.name = Console.ReadLine();
+                Console.WriteLine("Enter a name for Player 2");
+                player2.name = Console.ReadLine();
+                playGame();
+            }
+            else
+            {
+                Console.WriteLine("Invalid selection, please enter 1 or 2");
                 Console.ReadLine();
             }
         }
-        
+       
+
+        public void compareGestures()
+        {
+            if (player1.gestureChoice == player2.gestureChoice)
+            {
+                Console.WriteLine("It is a tie.");
+                Console.ReadLine();
+            }
+            else if (player1.gestureChoice == 1 && (player2.gestureChoice == 2 || player2.gestureChoice == 5))
+            {
+                player1.score++;
+                Console.WriteLine($"{player1.name}: {player1.score}{"  "} {player2.name}: {player2.score}");
+                Console.ReadLine();
+            }
+            else if (player1.gestureChoice == 2 && (player2.gestureChoice == 4 || player2.gestureChoice == 3))
+            {
+                player1.score++;
+                Console.WriteLine($"{player1.name}: {player1.score}{"  "} {player2.name}: {player2.score}");
+                Console.ReadLine();
+            }
+            else if (player1.gestureChoice == 3 && (player2.gestureChoice == 1 || player2.gestureChoice == 4))
+            {
+                player1.score++;
+                Console.WriteLine($"{player1.name}: {player1.score}{"  "} {player2.name}: {player2.score}");
+                Console.ReadLine();
+            }
+            else if (player1.gestureChoice == 4 && (player2.gestureChoice == 1 || player2.gestureChoice == 5))
+            {
+                player1.score++;
+                Console.WriteLine($"{player1.name}: {player1.score}{"  "} {player2.name}: {player2.score}");
+                Console.ReadLine();
+            }
+            else if (player1.gestureChoice == 5 && (player2.gestureChoice == 2 || player2.gestureChoice == 3))
+            {
+                player1.score++;
+                Console.WriteLine($"{player1.name}: {player1.score}{"  "} {player2.name}: {player2.score}");
+                Console.ReadLine();
+            }
+            else
+            {
+                player2.score++;
+                Console.WriteLine($"{player1.name}:  {player1.score}{"  "} {player2.name}: {player2.score}");
+                Console.ReadLine();
+            }
+        }
+
         public void playGame()
         {
-            do
+            while (player1.score < 2 && player2.score < 2)
             {
                 for (int i = 0; i < GameList.Count; i++)
                 {
                     Console.WriteLine($"{i + 1}{'.'} {GameList[i]}");
                 }
-                Console.ReadLine();
-
-                if (player1.gestureChoice == 1 &&  (player2.gestureChoice == 2 || player2.gestureChoice == 5))
-                {
-                    player1.score++;
-                    Console.WriteLine($"Player1 won,{player1.score}{"  "} {player2.score}");
-                    Console.ReadLine();
-                }
-                else if (player1.gestureChoice == 2 && (player2.gestureChoice == 4 || player2.gestureChoice == 3))
-                {
-                    player1.score++;
-                    Console.WriteLine($"Player1 won,{player1.score}{"  "} {player2.score}");
-                    Console.ReadLine();
-                }
-                else if (player1.gestureChoice == 3 && (player2.gestureChoice == 1 || player2.gestureChoice == 4))
-                {
-                    player1.score++;
-                    Console.WriteLine($"Player1 won,{player1.score}{"  "} {player2.score}");
-                    Console.ReadLine();
-                }
-                else if (player1.gestureChoice == 4 && (player2.gestureChoice == 1 || player2.gestureChoice == 5))
-                {
-                    player1.score++;
-                    Console.WriteLine($"Player1 won,{player1.score}{"  "} {player2.score}");
-                    Console.ReadLine();
-                }
-                else if (player1.gestureChoice == 5 && (player2.gestureChoice == 2 || player2.gestureChoice == 3))
-                {
-                    player1.score++;
-                    Console.WriteLine($"Player1 won, {player1.score}{"  "} {player2.score}");
-                    Console.ReadLine();
-                }
-                else
-                {
-                    player1.score++;
-                    Console.WriteLine($"Player2 Won {player1.score}{"  "} {player2.score}");
-                    Console.ReadLine();
-                }
-            } while (player1.score < 2 || player2.score < 2);
+                player1.chooseGesture();
+                player2.chooseGesture();
+                compareGestures();
+            }
             determineWinner();
         }
+
         public void determineWinner()
         {
-            if(player1.score == 1)
+            if(player1.score == 2)
             {
-                Console.WriteLine("");
+                Console.WriteLine($"Congratulations {player1.name}");
+                Console.ReadLine();
+            }
+            else{
+                Console.WriteLine($"Congratulations {player2.name}");
+                Console.ReadLine();
             }
         }
     }

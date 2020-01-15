@@ -15,9 +15,6 @@ namespace RockPaperScissors
 
         public Player(){}
 
-        public virtual void chooseGesture()
-        {
-            
-        }
+        public virtual void chooseGesture(){}
     }
 }

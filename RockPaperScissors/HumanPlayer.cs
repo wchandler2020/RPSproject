@@ -11,7 +11,29 @@ namespace RockPaperScissors
         public override void chooseGesture()
         {
             Console.WriteLine("Choose your gesture: ");
-            int gestureChoice = int.Parse(Console.ReadLine());
+
+            //switch case
+
+            gestureChoice = int.Parse(Console.ReadLine());
+            switch (gestureChoice)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                default:
+                    Console.WriteLine("Invalid selection, please enter 1 - 5");
+                    Console.ReadLine();
+                    chooseGesture();
+                    break;
+
+            }
         }
     }
 }

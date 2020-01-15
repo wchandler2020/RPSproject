@@ -13,7 +13,7 @@ namespace RockPaperScissors
         {
             Random random = new Random();
             int choiceNumber = random.Next(5);
-            gestureChoice = int.Parse(GameList[choiceNumber]);
+            gestureChoice = choiceNumber;
         }
     }
 }
