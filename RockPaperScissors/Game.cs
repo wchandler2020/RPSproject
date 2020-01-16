@@ -135,11 +135,11 @@ namespace RockPaperScissors
         {
             if(player1.score == 2)
             {
-                Console.WriteLine($"Congratulations {player1.name}");
+                Console.WriteLine($"Great Job {player1.name}, you are the winner!!!");
                 Console.ReadLine();
             }
             else{
-                Console.WriteLine($"Congratulations {player2.name}");
+                Console.WriteLine($"Great Job {player2.name}, you are the winner!!!");
                 Console.ReadLine();
             }
         }
